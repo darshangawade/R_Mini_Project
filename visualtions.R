@@ -1,7 +1,7 @@
 library(tidyverse)
+library(ggcorrplot)
 
 df<-read_csv("Admission_Predict.csv")
-
 head(df)
 
 # To find the relationship between GRE Score and TOEFL Score
@@ -61,16 +61,16 @@ c5 = 0
 l = as.integer(count(df,'University Rating')) 
 print(l[2])
 for (i in 1:l[2]) {
-  if (i==1){
+  if (df$`University Rating`[i]==1){
     rat1 = rat1 + df$CGPA[i]
     c1 = c1 + 1
-  }else if (i==2){
+  }else if (df$`University Rating`[i]==2){
     rat2 = rat2 + df$CGPA[i]
     c2 = c2 + 1
-  }else if (i==3){
+  }else if (df$`University Rating`[i]==3){
     rat3 = rat3 + df$CGPA[i]
     c3 = c3 + 1
-  }else if (i==4){
+  }else if (df$`University Rating`[i]==4){
     rat4 = rat4 + df$CGPA[i]
     c4 = c4 + 1
   }else{
@@ -101,6 +101,23 @@ ggplot(datas, aes(x = cgpa, y = chance_of_admit )) +
 research = c(df$Research)
 chance_of_admit = c(df$`Chance of Admit`)
 datas <- data.frame(research,chance_of_admit)
+print(head(datas))
 
-ggplot(datas, aes(x = research, y = chance_of_admit )) 
- # Line type
+
+ggplot(datas, aes(x = chance_of_admit, y = research )) +
+  geom_line(color = 4,    # Color of the line
+            lwd = 1,      # Width of the line
+            linetype = 1) # Line type
+
+
+# Correlogram to represent the corellation of multiple continuous variables present in the dataset
+# Correlation matrix
+corr <- round(cor(df), 1)
+ggcorrplot(corr, hc.order = TRUE, 
+           type = "lower", 
+           lab = TRUE, 
+           lab_size = 3, 
+           method="circle", 
+           colors = c("#002266", "#3377ff", "#b3ccff"), 
+           title="Correlogram of Chance of Admit Dataset", 
+           ggtheme=theme_bw)
