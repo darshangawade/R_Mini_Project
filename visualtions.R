@@ -97,6 +97,7 @@ ggplot(datas, aes(x = cgpa, y = chance_of_admit )) +
             lwd = 1,      # Width of the line
             linetype = 1) # Line type
 
+<<<<<<< HEAD
 # how research affects the chances to get admitted
 research = c(df$Research)
 chance_of_admit = c(df$`Chance of Admit`)
@@ -121,3 +122,34 @@ ggcorrplot(corr, hc.order = TRUE,
            colors = c("#002266", "#3377ff", "#b3ccff"), 
            title="Correlogram of Chance of Admit Dataset", 
            ggtheme=theme_bw)
+=======
+
+
+#Bar graph for range of Chance of admit Vs No of students
+r1=0
+r2=0
+r3=0
+r4=0
+r5=0
+for(i in 1:l[2]){
+  if(df$`Chance of Admit`[i]>=0 && df$`Chance of Admit`[i]<=0.2){
+    r1 = r1+1
+  }else if(df$`Chance of Admit`[i]>=0.2 && df$`Chance of Admit`[i]<=0.4){
+    r2 = r2+1
+  }else if(df$`Chance of Admit`[i]>=0.4 && df$`Chance of Admit`[i]<=0.6){
+    r3 = r3+1
+  }else if(df$`Chance of Admit`[i]>=0.6 && df$`Chance of Admit`[i]<=0.8){
+    r4 = r4+1
+  }else{
+    r5 = r5+1
+  }
+}
+
+range <- c('0-0.2', '0.2-0.4', '0.4-0.6', '0.6-0.8', '0.8-1')
+no_of_students<- c(r1, r2, r3, r4, r5)
+datas <- data.frame(range, no_of_students)
+ggplot(data = datas, mapping = aes(x=range, y=no_of_students,fullrange=TRUE)) +
+  geom_bar(stat="identity", position = "dodge") +
+  scale_fill_manual(values=c("#002b80", "#003cb3" ,"#004de6", "#1a66ff", "#4d88ff"))
+
+>>>>>>> 22f061bc19b3b6956aec64a609259d95ba62b078
