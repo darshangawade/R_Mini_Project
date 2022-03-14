@@ -47,3 +47,60 @@ ggplot(data = rating_freq_count, aes(x = "", y = rating_freq, fill = university_
   coord_polar("y")
 
 
+# University rating with the variation of average CGPA score
+rat1 = 0
+rat2 = 0
+rat3 = 0
+rat4 = 0
+rat5 = 0
+c1 = 0
+c2 = 0
+c3 = 0
+c4 = 0
+c5 = 0
+l = as.integer(count(df,'University Rating')) 
+print(l[2])
+for (i in 1:l[2]) {
+  if (i==1){
+    rat1 = rat1 + df$CGPA[i]
+    c1 = c1 + 1
+  }else if (i==2){
+    rat2 = rat2 + df$CGPA[i]
+    c2 = c2 + 1
+  }else if (i==3){
+    rat3 = rat3 + df$CGPA[i]
+    c3 = c3 + 1
+  }else if (i==4){
+    rat4 = rat4 + df$CGPA[i]
+    c4 = c4 + 1
+  }else{
+    rat5 = rat5 + df$CGPA[i]
+    c5 = c5 + 1
+  }
+}
+
+university_rating <- c('1','2','3','4','5')
+avg_cgpa <- c(rat1/c1, rat2/c2, rat3/c3, rat4/c4 , rat5/c5)
+
+datas <- data.frame(university_rating,avg_cgpa)
+ggplot(data = datas, mapping = aes(x=university_rating, y=avg_cgpa,fill=university_rating)) +
+  geom_bar(stat="identity", position = "dodge") +
+  scale_fill_manual(values=c("#002b80", "#003cb3" ,"#004de6", "#1a66ff", "#4d88ff"))
+
+# variation of chances of admit with CGPA score
+cgpa = c(df$CGPA)
+chance_of_admit = c(df$`Chance of Admit`)
+datas <- data.frame(cgpa,chance_of_admit)
+
+ggplot(datas, aes(x = cgpa, y = chance_of_admit )) +
+  geom_line(color = 4,    # Color of the line
+            lwd = 1,      # Width of the line
+            linetype = 1) # Line type
+
+# how research affects the chances to get admitted
+research = c(df$Research)
+chance_of_admit = c(df$`Chance of Admit`)
+datas <- data.frame(research,chance_of_admit)
+
+ggplot(datas, aes(x = research, y = chance_of_admit )) 
+ # Line type
