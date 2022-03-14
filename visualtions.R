@@ -97,7 +97,6 @@ ggplot(datas, aes(x = cgpa, y = chance_of_admit )) +
             lwd = 1,      # Width of the line
             linetype = 1) # Line type
 
-<<<<<<< HEAD
 # how research affects the chances to get admitted
 research = c(df$Research)
 chance_of_admit = c(df$`Chance of Admit`)
@@ -105,7 +104,7 @@ datas <- data.frame(research,chance_of_admit)
 print(head(datas))
 
 
-ggplot(datas, aes(x = chance_of_admit, y = research )) +
+ggplot(datas, aes(x = research, y = chance_of_admit )) +
   geom_line(color = 4,    # Color of the line
             lwd = 1,      # Width of the line
             linetype = 1) # Line type
@@ -122,7 +121,6 @@ ggcorrplot(corr, hc.order = TRUE,
            colors = c("#002266", "#3377ff", "#b3ccff"), 
            title="Correlogram of Chance of Admit Dataset", 
            ggtheme=theme_bw)
-=======
 
 
 #Bar graph for range of Chance of admit Vs No of students
@@ -152,4 +150,5 @@ ggplot(data = datas, mapping = aes(x=range, y=no_of_students,fullrange=TRUE)) +
   geom_bar(stat="identity", position = "dodge") +
   scale_fill_manual(values=c("#002b80", "#003cb3" ,"#004de6", "#1a66ff", "#4d88ff"))
 
->>>>>>> 22f061bc19b3b6956aec64a609259d95ba62b078
+
+
