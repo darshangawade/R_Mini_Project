@@ -17,6 +17,8 @@ test <- df[splitting==2,]
 
 rf_fit <- randomForest(Chance_of_Admit ~ ., data=train)
 
+saveRDS(rf_fit, "random_forest_regression_model.rds")
+
 # predicting the chance of admit on the data present in test dadaset
 y_pred = predict(rf_fit,test)
 # creating a new column in test dataset name as `prediction` and inserting y_pred into it.
@@ -39,3 +41,4 @@ predict(rf_fit,datas)
 
 res = as.numeric(predict(rf_fit,datas)[1])
 print(paste('Your chance of addmission is',res*100,'%'))
+
