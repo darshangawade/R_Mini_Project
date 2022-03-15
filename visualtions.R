@@ -5,16 +5,16 @@ df<-read_csv("Admission_Predict.csv")
 head(df)
 
 # To find the relationship between GRE Score and TOEFL Score
-ggplot(df,aes(x=`GRE Score`,y=`TOEFL Score`,color=`Chance of Admit`))+geom_point()
+ggplot(df,aes(x=GRE_Score,y=TOEFL_Score,color=Chance_of_Admit))+geom_point()
 print("The correlation coefficient between GRE & TOEFL score is") 
-cor(df$`GRE Score`,df$`TOEFL Score`)
+cor(df$GRE_Score,df$TOEFL_Score)
 
 head(df)
 
 # To find the relationship between Chance of Admit and GRE Score
 print("The correlation coefficient between Chance of Admit & GRE Score is")
-cor(df$`GRE Score`,df$`Chance of Admit`)
-ggplot(df,aes(x=`GRE Score`,y=`Chance of Admit`,color=`TOEFL Score`))+geom_point()
+cor(df$GRE_Score,df$Chance_of_Admit)
+ggplot(df,aes(x=GRE_Score,y=Chance_of_Admit,color=TOEFL_Score))+geom_point()
 
 # pie chart for university ratings 
 rat1 = 0
@@ -23,7 +23,7 @@ rat3 = 0
 rat4 = 0
 rat5 = 0
 
-for (item in df$`University Rating`) {
+for (item in df$University_Rating) {
   if (item==1){
     rat1 = rat1 +1
   }else if (item==2){
@@ -61,16 +61,16 @@ c5 = 0
 l = as.integer(count(df,'University Rating')) 
 print(l[2])
 for (i in 1:l[2]) {
-  if (df$`University Rating`[i]==1){
+  if (df$University_Rating[i]==1){
     rat1 = rat1 + df$CGPA[i]
     c1 = c1 + 1
-  }else if (df$`University Rating`[i]==2){
+  }else if (df$University_Rating[i]==2){
     rat2 = rat2 + df$CGPA[i]
     c2 = c2 + 1
-  }else if (df$`University Rating`[i]==3){
+  }else if (df$University_Rating[i]==3){
     rat3 = rat3 + df$CGPA[i]
     c3 = c3 + 1
-  }else if (df$`University Rating`[i]==4){
+  }else if (df$University_Rating[i]==4){
     rat4 = rat4 + df$CGPA[i]
     c4 = c4 + 1
   }else{
@@ -89,7 +89,7 @@ ggplot(data = datas, mapping = aes(x=university_rating, y=avg_cgpa,fill=universi
 
 # variation of chances of admit with CGPA score
 cgpa = c(df$CGPA)
-chance_of_admit = c(df$`Chance of Admit`)
+chance_of_admit = c(df$Chance_of_Admit)
 datas <- data.frame(cgpa,chance_of_admit)
 
 ggplot(datas, aes(x = cgpa, y = chance_of_admit )) +
@@ -99,7 +99,7 @@ ggplot(datas, aes(x = cgpa, y = chance_of_admit )) +
 
 # how research affects the chances to get admitted
 research = c(df$Research)
-chance_of_admit = c(df$`Chance of Admit`)
+chance_of_admit = c(df$Chance_of_Admit)
 datas <- data.frame(research,chance_of_admit)
 print(head(datas))
 
@@ -130,13 +130,13 @@ r3=0
 r4=0
 r5=0
 for(i in 1:l[2]){
-  if(df$`Chance of Admit`[i]>=0 && df$`Chance of Admit`[i]<=0.2){
+  if(df$Chance_of_Admit[i]>=0 && df$Chance_of_Admit[i]<=0.2){
     r1 = r1+1
-  }else if(df$`Chance of Admit`[i]>=0.2 && df$`Chance of Admit`[i]<=0.4){
+  }else if(df$Chance_of_Admit[i]>=0.2 && df$Chance_of_Admit[i]<=0.4){
     r2 = r2+1
-  }else if(df$`Chance of Admit`[i]>=0.4 && df$`Chance of Admit`[i]<=0.6){
+  }else if(df$Chance_of_Admit[i]>=0.4 && df$Chance_of_Admit[i]<=0.6){
     r3 = r3+1
-  }else if(df$`Chance of Admit`[i]>=0.6 && df$`Chance of Admit`[i]<=0.8){
+  }else if(df$Chance_of_Admit[i]>=0.6 && df$Chance_of_Admit[i]<=0.8){
     r4 = r4+1
   }else{
     r5 = r5+1
@@ -146,7 +146,7 @@ for(i in 1:l[2]){
 range <- c('0-0.2', '0.2-0.4', '0.4-0.6', '0.6-0.8', '0.8-1')
 no_of_students<- c(r1, r2, r3, r4, r5)
 datas <- data.frame(range, no_of_students)
-ggplot(data = datas, mapping = aes(x=range, y=no_of_students,fullrange=TRUE)) +
+ggplot(data = datas, mapping = aes(x=range, y=no_of_students,fill=range)) +
   geom_bar(stat="identity", position = "dodge") +
   scale_fill_manual(values=c("#002b80", "#003cb3" ,"#004de6", "#1a66ff", "#4d88ff"))
 

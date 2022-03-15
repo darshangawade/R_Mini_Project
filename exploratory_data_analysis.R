@@ -6,34 +6,34 @@ df<-read_csv("Admission_Predict.csv")
 head(df)
 
 # minimum GRE score
-min(df$`GRE Score`)
+min(df$GRE_Score)
 # maximum GRE score
-max(df$`GRE Score`)
+max(df$GRE_Score)
 
 # minimum TOEFL score
-min(df$`TOEFL Score`)
+min(df$TOEFL_Score)
 # maximum TOEFL score
-max(df$`TOEFL Score`)
+max(df$TOEFL_Score)
 
 
 # Range of university ratings
-range(df$`University Rating`)
+range(df$University_Rating)
 # Range of SOP
-range(df$`SOP`)
+range(df$SOP)
 # Range of LOR
-range(df$`LOR`)
+range(df$LOR)
 
 #mean score of GRE
-mean(df$`GRE Score`)
+mean(df$GRE_Score)
 #mean score of TOEFL
-mean(df$`TOEFL Score`)
+mean(df$TOEFL_Score)
 #mean of CGPA
 mean(df$CGPA)
 
 # median of GRE score
-median(df$`GRE Score`)
+median(df$GRE_Score)
 # median of TOEFL score
-median(df$`TOEFL Score`)
+median(df$TOEFL_Score)
 # median of CGPA
 median(df$CGPA)
 
@@ -41,7 +41,7 @@ median(df$CGPA)
 summary(df)
 
 # summary of the data as per the ratings given to university
-by(df,df$`University Rating`,summary)
+by(df,df$University_Rating,summary)
 # summary of the data as per the SOP
 by(df,df$SOP,summary)
 # summary of the data as per the LOR
