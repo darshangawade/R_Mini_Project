@@ -1,8 +1,6 @@
 library(tidyverse)
 
 df<-read_csv("Admission_Predict.csv")
-
-
 head(df)
 
 # minimum GRE score
@@ -14,7 +12,6 @@ max(df$GRE_Score)
 min(df$TOEFL_Score)
 # maximum TOEFL score
 max(df$TOEFL_Score)
-
 
 # Range of university ratings
 range(df$University_Rating)
