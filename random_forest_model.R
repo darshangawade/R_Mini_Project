@@ -1,4 +1,4 @@
-
+{
   library(tidyverse)
   library(randomForest)
   library(caret)
@@ -22,6 +22,10 @@
   y_pred = predict(rf_fit,test)
   # creating a new column in test dataset name as `prediction` and inserting y_pred into it.
   test$prediction = y_pred
+  actual = test$Chance_of_Admit
+  plot(Y_pred,type='o',col='red',xlab='values',ylabel='Chances of Admission',main='Line Chart')
+  lines(actual,type='o',col='blue')
+  
   
   # input form user
   
@@ -42,4 +46,4 @@
   res = as.numeric(predict(rf_fit,datas)[1])
   print(paste('Your chance of addmission is',res*100,'%'))
   
-
+}

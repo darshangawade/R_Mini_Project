@@ -1,10 +1,4 @@
-############################################
-# Data Professor                           #
-# http://youtube.com/dataprofessor         #
-# http://github.com/dataprofessor          #
-# http://facebook.com/dataprofessor        #
-# https://www.instagram.com/data.professor #
-############################################
+
 
 # Import libraries
 library(shiny)
@@ -30,7 +24,7 @@ ui <- pageWithSidebar(
     tags$label(h3('Insert your data for prediction :)')),
     numericInput("gre_score", 
                  label = "GRE Score ( Enter in range 0-340 ) ", 
-                 value = 1),
+                 value = 150),
     numericInput("toefl_score", 
                  label = "TOEFL Score ( Enter in range 0-120 )", 
                  value = 100),
