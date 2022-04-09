@@ -62,7 +62,6 @@ ui <- pageWithSidebar(
 
 server<- function(input, output, session) {
   
-  
   # Input Data
   datasetInput <- reactive({  
     PREDICTION = ''
@@ -83,7 +82,6 @@ server<- function(input, output, session) {
     
     Output <- data.frame(PREDICTION)
     
-
   })
   
   # Status/Output Text Box
@@ -102,7 +100,6 @@ server<- function(input, output, session) {
     } 
   })
 
-  
 }
 
 ####################################
